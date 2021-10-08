@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Card from "./Components/Card";
 import SearchBar from "./Components/SearchBar";
 import data from "./data.json"
+
 function App() {
 
   const[search,setSearch] = useState("");
@@ -40,7 +41,7 @@ function App() {
 
   return (
     <div>
-      <div className="row justify-content-center">
+        <div className="row justify-content-center">
         <SearchBar handleChange={handleChange} handleSubmit={handleSubmit}/>
       </div>
       <div className="row row-cols-1 row-cols-sm-3 row-cols-md-4 g-4">
