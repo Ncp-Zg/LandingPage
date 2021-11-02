@@ -1,22 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 const AxiosTutorial = () => {
 
+  const [data,setData] = useState("")
+
   const api=()=>axios.create({
-      baseURL:"https://jsonplaceholder.typicode.com",
+      baseURL:"http://localhost:5000",
 
   })  
+  
 
+  useEffect(()=>{
+    api().get("/aktorler/1").then((res)=>{
+      console.log(res.status,res.statusText,res.data)
+  })
+  },[])
 
-  api()
-    .get("/posts")
-    .then(result=>result.data).then(result=>console.log(result));
+  
 
     // fetch("https://jsonplaceholder.typicode.com/posts",{method:"GET"})
     // .then(result=>result.json()).then(result=>console.log(result));
 
-  return <div>hey</div>;
+  return <div>
+    {
+      JSON.stringify(data)
+    }
+  </div>;
 };
 
 export default AxiosTutorial;

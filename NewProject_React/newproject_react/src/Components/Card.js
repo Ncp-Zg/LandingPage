@@ -1,7 +1,10 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
+import { addToBasket } from "../redux/ActionCreators/ProductActionCreators";
 
-const Card = ({ data }) => {
+const Card = ({ data , children }) => {
+  const dispatch = useDispatch();
   const history = useHistory();
   return (
     <div className="card">
@@ -20,13 +23,19 @@ const Card = ({ data }) => {
       </div>
       <button
         className="btn btn-primary"
-        onClick={() => history.push({
-          pathname:`/products/${data.id}`,
-          state:data
-        })}
+        onClick={() =>
+          history.push({
+            pathname: `/products/${data.id}`,
+            state: data,
+          })
+        }
       >
         Ürüne Git
       </button>
+      <button className="btn btn-primary mt-1" onClick={()=>dispatch(addToBasket(data))}>
+        Sepete ekle
+      </button>
+      <p>{children}</p>
     </div>
   );
 };
