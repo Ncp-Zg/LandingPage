@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import { addToBasket } from "../redux/ActionCreators/ProductActionCreators";
 
-const Card = ({ data , children }) => {
+const Card = ({ data  }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   return (
@@ -35,7 +35,6 @@ const Card = ({ data , children }) => {
       <button className="btn btn-primary mt-1" onClick={()=>dispatch(addToBasket(data))}>
         Sepete ekle
       </button>
-      <p>{children}</p>
     </div>
   );
 };

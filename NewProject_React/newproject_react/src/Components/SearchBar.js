@@ -1,9 +1,11 @@
 import { ShoppingBasket } from "@material-ui/icons";
 import React from "react";
 import { useSelector } from "react-redux";
+import { useHistory } from "react-router";
 
 const SearchBar = ({handleChange,handleSubmit}) => {
   const {product} = useSelector(state=>({product:state.product}))
+  const history = useHistory()
 
   return (
     <form className="col-6" onSubmit={handleSubmit}>
@@ -18,7 +20,7 @@ const SearchBar = ({handleChange,handleSubmit}) => {
           Search
         </button>
 
-        <ShoppingBasket classname="ms-6"/>
+        <ShoppingBasket onClick={()=>history.push("/basketPage")} />
         <p>{product.length}</p>
 
       </div>
